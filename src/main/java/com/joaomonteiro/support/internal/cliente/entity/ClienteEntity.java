@@ -16,15 +16,20 @@ public class ClienteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, length = 125)
     private String nome;
+
     @Column(nullable = false, length = 11, unique = true)
     private int cpf;
+
     @Column(nullable = false, length = 150)
     private String email;
-    @Column(nullable = false)
-    private boolean ativo;
 
+    @Column(nullable = false)
+    private boolean ativo = true;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<EquipamentoEntity> equipamentos;
 
     public void alterarNome(String nome) {
@@ -39,6 +44,11 @@ public class ClienteEntity {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
+    }
+
+    public void adicionarEquipamento(EquipamentoEntity equipamento) {
+        equipamentos.add(equipamento);
+        equipamento.associarCliente(this);
     }
 
     public void ativar(boolean ativo) {
