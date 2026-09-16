@@ -1,5 +1,6 @@
 package com.joaomonteiro.support.internal.cliente.service;
 
+import com.joaomonteiro.support.internal.cliente.dto.CriarClienteRequest;
 import com.joaomonteiro.support.internal.cliente.entity.ClienteEntity;
 import com.joaomonteiro.support.internal.cliente.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +12,9 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
 
-    public ClienteEntity criarCliente(ClienteEntity cliente){
-            return clienteRepository.save(cliente);
+    public ClienteEntity criarCliente(CriarClienteRequest clienteRequest){
+            ClienteEntity cliente = new ClienteEntity(clienteRequest.nome(),clienteRequest.cpf(),clienteRequest.email());
+        return clienteRepository.save(cliente);
     }
 
 }
