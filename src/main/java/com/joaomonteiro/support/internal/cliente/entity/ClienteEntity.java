@@ -21,7 +21,7 @@ public class ClienteEntity {
     private String nome;
 
     @Column(nullable = false, length = 11, unique = true)
-    private int cpf;
+    private String cpf;
 
     @Column(nullable = false, length = 150)
     private String email;
@@ -29,7 +29,7 @@ public class ClienteEntity {
     @Column(nullable = false)
     private boolean ativo = true;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "clienteEntity", cascade = CascadeType.ALL)
     private List<EquipamentoEntity> equipamentos;
 
     public void alterarNome(String nome) {
@@ -40,7 +40,7 @@ public class ClienteEntity {
         this.email = email;
     }
 
-    public ClienteEntity(String nome, int cpf, String email) {
+    public ClienteEntity(String nome, String cpf, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
