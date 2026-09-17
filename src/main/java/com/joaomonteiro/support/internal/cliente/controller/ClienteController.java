@@ -18,7 +18,6 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<ClienteEntity> salvarCliente(@RequestBody @Valid CriarClienteRequest cliente){
-        clienteService.criarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(this.clienteService.criarCliente(cliente));
     }

@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/assistencia
     username: postgres
-    password: 123456
+    password: 101010
 
   jpa:
     properties:

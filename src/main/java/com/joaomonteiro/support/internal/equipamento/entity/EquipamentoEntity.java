@@ -27,7 +27,7 @@ public class EquipamentoEntity {
     private String modelo;
 
     @Column(nullable = false, unique = true)
-    private int numeroSerie;
+    private String numeroSerie;
 
     @JoinColumn(name = "cliente_id",nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,7 +37,7 @@ public class EquipamentoEntity {
         this.clienteEntity = cliente;
     }
 
-    public EquipamentoEntity(String tipo, String marca, String modelo, int numeroSerie) {
+    public EquipamentoEntity(String tipo, String marca, String modelo, String numeroSerie) {
         this.tipo = tipo;
         this.marca = marca;
         this.modelo = modelo;
